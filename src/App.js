@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import logo from './ga.png';
-import Account from './Account';
+import Account from './Account'
 
 class App extends Component {
   render() {

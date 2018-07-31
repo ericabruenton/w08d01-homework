@@ -16,9 +16,7 @@ class Account extends Component {
     // set a local variable to the new balance based off of the original balance + amount
     const amountAfterDeposit = this.state.balance + amountDeposited;
     // set the balance to the newBalance using the setState method 
-    this.setState({
-      balance: amountAfterDeposit
-    })
+    this.setState({[this.state.balance]: amountAfterDeposit})
     // empty out the text box in this component
     this.inputBox.value = '';
   } 
@@ -28,9 +26,7 @@ class Account extends Component {
     const amountWithdrawn = parseInt(this.inputBox.value);
     const amountAfterWithdraw = this.state.balance - amountWithdrawn;
     
-    this.setState({
-      balance: amountAfterWithdraw
-    })
+    this.setState({[this.state.balance]: amountAfterWithdraw});
 
     this.inputBox.value = '';
   } 
@@ -38,12 +34,12 @@ class Account extends Component {
   render() {
     const balanceClass = 'balance';
       if (this.state.balance === 0) {
-        balanceClass += ' zero';
+        return balanceClass += 'zero';
       }
     return (
       <div className="account">
         <h2>{this.props.name}</h2>
-        <div className={"balanceClass"}>$0</div>
+        <div className={balanceClass}>$0</div>
         <input type="text" placeholder="enter an amount" ref={(input) => this.inputBox = input}/>
         <input type="button" value="Deposit" onClick={this.handleDepositClick} />
         <input type="button" value="Withdraw"  onClick={this.handleWithdrawClick}/>
